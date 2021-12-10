@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<page-set 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.gatein.org/xml/ns/gatein_objects_1_6 http://www.gatein.org/xml/ns/gatein_objects_1_6"
+        xmlns="http://www.gatein.org/xml/ns/gatein_objects_1_6">
+  <page>
+    <name>training</name>                        <!--             nom de page      'key' -->
+    <title>Training App</title>
+    <access-permissions>*:/platform/users</access-permissions>
+    <edit-permission>*:/platform/administrators</edit-permission>
+                <!--  UIContainer    -->
+    <container template="system:/groovy/portal/webui/container/UIContainer.gtmpl">
+      <access-permissions>*:/platform/users</access-permissions>
+      <portlet-application>
+        <portlet>
+          <application-ref>training</application-ref>  <!--            nom du WAR           -->
+          <portlet-ref>clientPortlet</portlet-ref>  <!--            nom du portlet declaré dans portlet.xml -->
+        </portlet>
+        <title>Training Page Sample</title>
+        <access-permissions>*:/platform/users</access-permissions>
+        <show-info-bar>false</show-info-bar>
+      </portlet-application>
+    </container>
+                <!--  dynamic container    -->
+      <container id="idpourcontainer"
+                 template="system:/groovy/portal/webui/container/UIAddOnContainer.gtmpl">
+          <name>bottom-all-container</name>   <!--     name of dynamic container     -->
+          <access-permissions>*:/platform/administrators;editor:/platform/web-contributors</access-permissions>
+          <factory-id>addonContainer</factory-id>
+      </container>
+  </page>
+
+
+    <page>
+        <name>client</name>                        <!--             nom de page      'key' -->
+        <title>client App</title>
+        <access-permissions>*:/platform/users</access-permissions>
+        <edit-permission>*:/platform/administrators</edit-permission>
+        <!--  UIContainer    -->
+        <container template="system:/groovy/portal/webui/container/UIContainer.gtmpl">
+            <access-permissions>*:/platform/users</access-permissions>
+            <portlet-application>
+                <portlet>
+                    <application-ref>training</application-ref>  <!--            nom du WAR           -->
+                    <portlet-ref>clientPortlet</portlet-ref>  <!--            nom du portlet declaré dans portlet.xml -->
+                </portlet>
+                <title>Training Page Sample</title>
+                <access-permissions>*:/platform/users</access-permissions>
+                <show-info-bar>false</show-info-bar>
+            </portlet-application>
+        </container>
+        <!--  dynamic container    -->
+<!--        <container id="idpourcontainer"-->
+<!--                   template="system:/groovy/portal/webui/container/UIAddOnContainer.gtmpl">-->
+<!--            <name>bottom-all-container</name>   &lt;!&ndash;     name of dynamic container     &ndash;&gt;-->
+<!--            <access-permissions>*:/platform/administrators;editor:/platform/web-contributors</access-permissions>-->
+<!--            <factory-id>addonContainer</factory-id>-->
+<!--        </container>-->
+    </page>
+
+</page-set>

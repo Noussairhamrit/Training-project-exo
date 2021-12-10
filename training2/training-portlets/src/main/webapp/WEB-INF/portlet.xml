@@ -1,0 +1,91 @@
+<portlet-app version="2.0" xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd">
+
+	<portlet>
+		<portlet-name>trainingPortlet</portlet-name>
+		<portlet-class>org.exoplatform.commons.api.portlet.GenericDispatchedViewPortlet</portlet-class>
+		<init-param>
+      <name>portlet-view-dispatched-file-path</name>
+      <value>/html/index.html</value>
+     </init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+		</supports>
+		<portlet-info>
+			<title>Training Portlet</title>
+		</portlet-info>
+	</portlet>
+
+	<portlet>
+		<portlet-name>helloPortlet</portlet-name>
+		<portlet-class>org.exoplatform.commons.api.portlet.GenericDispatchedViewPortlet</portlet-class>
+		<init-param>
+			<name>portlet-view-dispatched-file-path</name>
+			<value>/html/hello.html</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+		</supports>
+		<portlet-info>
+			<title>Hello Portlet</title>
+		</portlet-info>
+	</portlet>
+	<portlet>
+		<portlet-name>demoPortlet</portlet-name>
+		<portlet-class>org.exoplatform.commons.api.portlet.GenericDispatchedViewPortlet</portlet-class>
+		<init-param>
+			<name>portlet-view-dispatched-file-path</name>
+			<value>/html/demo.html</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+		</supports>
+		<portlet-info>
+			<title>demo Portlet</title>
+		</portlet-info>
+	</portlet>
+
+	<portlet>
+		<portlet-name>noussairPortlet</portlet-name>
+		<portlet-class>org.exoplatform.commons.api.portlet.GenericDispatchedViewPortlet</portlet-class>
+		<init-param>
+			<name>portlet-view-dispatched-file-path</name>
+			<value>/html/noussair.html</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+		</supports>
+		<portlet-info>
+			<title>noussair Portlet</title>
+		</portlet-info>
+	</portlet>
+    <portlet>
+        <portlet-name>clientPortlet</portlet-name>
+        <portlet-class>org.exoplatform.commons.api.portlet.GenericDispatchedViewPortlet</portlet-class>
+        <init-param>
+            <name>portlet-view-dispatched-file-path</name>
+            <value>/html/client.html</value>
+        </init-param>
+        <supports>
+            <mime-type>text/html</mime-type>
+        </supports>
+        <portlet-info>
+            <title>client Portlet</title>
+        </portlet-info>
+    </portlet>
+
+    <portlet>
+        <portlet-name>extension</portlet-name>
+        <portlet-class>org.exoplatform.commons.api.portlet.GenericDispatchedViewPortlet</portlet-class>
+        <init-param>
+            <name>portlet-view-dispatched-file-path</name>
+            <value>/html/extension.html</value>
+        </init-param>
+        <supports>
+            <mime-type>text/html</mime-type>
+        </supports>
+        <portlet-info>
+            <title>extension Portlet</title>
+        </portlet-info>
+    </portlet>
+</portlet-app>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<node-navigation
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.gatein.org/xml/ns/gatein_objects_1_6 http://www.gatein.org/xml/ns/gatein_objects_1_6"
+        xmlns="http://www.gatein.org/xml/ns/gatein_objects_1_6">
+  <priority>4</priority>
+  <page-nodes>
+    <node>
+      <name>training-test</name>  <!--     nom du URL        -->
+      <label>Training</label>   <!--           title  sidebar       -->
+      <page-reference>portal::dw::training</page-reference> <!--     "training" pour pointer sur la page avec le nom training dans page.xml        -->
+    </node>
+    <node>
+        <name>client-client</name>  <!--     nom du URL        -->
+        <label>hayet</label>   <!--           title  sidebar       -->
+        <page-reference>portal::dw::client</page-reference> <!--     "training" pour pointer sur la page avec le nom training dans page.xml        -->
+    </node>
+  </page-nodes>
+</node-navigation>
