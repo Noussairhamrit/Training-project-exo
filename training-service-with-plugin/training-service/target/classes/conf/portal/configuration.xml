@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This file is part of the Meeds project (https://meeds.io/).
+Copyright (C) 2020 Meeds Association
+contact@meeds.io
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 3 of the License, or (at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+You should have received a copy of the GNU Lesser General Public License
+along with this program; if not, write to the Free Software Foundation,
+Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+-->
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd http://www.exoplatform.org/xml/ns/kernel_1_2.xsd" xmlns="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd">
+<component>
+    <key>org.exo.training.service.ITextService</key>
+    <type>org.exo.training.service.TextService</type>
+</component>
+<!--**************************************     plugins    *********************************************-->
+    <external-component-plugins>
+        <target-component>org.exo.training.service.ITextService</target-component>
+        <component-plugin>
+            <name>UpperCase plugin</name>
+            <set-method>addTextTransformer</set-method>
+            <type>org.exo.training.plugin.UpeerCaseTransformer</type>
+            <description>Plugin that changes text to Upper case</description>
+        </component-plugin>
+        <component-plugin>
+            <name>translate plugin</name>
+            <set-method>addTextTransformer</set-method>
+            <type>org.exo.training.plugin.translate</type>
+            <description>Plugin that translate text </description>
+        </component-plugin>
+        <component-plugin>
+            <name>Ponctuation plugin</name>
+            <set-method>addTextTransformer</set-method>
+            <type>org.exo.training.plugin.Ponctuation</type>
+            <description>Plugin that changes text to Ponctuation text</description>
+        </component-plugin>
+    </external-component-plugins>
+<!-- *************************************  Listener  **********************************************-->
+    <external-component-plugins>
+        <target-component>org.exoplatform.services.listener.ListenerService</target-component>
+        <component-plugin>
+            <name>text-changed</name>
+            <set-method>addListener</set-method>
+            <type>org.exo.training.listener.TextListener</type>
+            <description>Listener to be invoked when a text changes</description>
+        </component-plugin>
+        <component-plugin>
+            <name>text-TRANSLATE</name>
+            <set-method>addListener</set-method>
+            <type>org.exo.training.listener.TextListener</type>
+            <description>Listener to be invoked when a text changes</description>
+        </component-plugin>
+    </external-component-plugins>
+<!--*************************************    JOB        ******************************************-->
+    <external-component-plugins>
+        <target-component>org.exoplatform.services.scheduler.JobSchedulerService</target-component> <!--       always               -->
+<!--***************************************  Cron  ***********************************************-->
+        <component-plugin>
+            <name>AddCronJob</name>                                 <!-- always -->
+            <set-method>addCronJob</set-method>                     <!-- always -->
+            <type>org.exoplatform.services.scheduler.CronJob</type> <!-- always -->
+            <description>Cron Job of Text service</description>
+            <init-params>
+                <properties-param>
+                    <name>cronjob.info</name>
+                    <description>Configuration for queue messages processing</description>
+                    <property name="jobName" value="TextServiceCronJob"/>          <!--       any name           -->
+                    <property name="groupName" value="TextService"/>               <!--       any name           -->
+                    <property name="job" value="org.exo.training.job.CronJob"/>    <!--       class              -->
+                    <property name="expression" value="${exo.social.QueueGroupSpaceBindingJob.expression:0 0/5 * * * ?}"/>
+                    <!-- Runs every 5 minutes -->
+                </properties-param>
+            </init-params>
+        </component-plugin>
+<!--                                       Periodic                            -->
+        <component-plugin>
+            <name>TextPeriodicJob</name>                             <!-- always -->
+            <set-method>addPeriodJob</set-method>                    <!-- always -->
+            <type>org.exoplatform.services.scheduler.PeriodJob</type><!-- always -->
+            <description>A Periodic job</description>
+            <init-params>
+                <properties-param>
+                    <name>job.info</name>
+                    <property name="jobName" value="TextServicePeriodJob" />         <!--       any name           -->
+                    <property name="groupName" value="TextService" />                <!--       any name           -->
+                    <property name="job" value="org.exo.training.job.PeriodicJob" /> <!--       class              -->
+                    <!-- REPEAT_INDEFINITELY -->
+                    <property name="repeatCount" value="0" />
+                    <!--
+                      Period: each day (12 hours).
+                    -->
+                    <property name="period" value="20000" />
+                    <!-- Start exceution: a minute after server startup -->
+                    <property name="startTime" value="+60000" />
+                    <!-- REPEAT_INDEFINITELY -->
+                    <property name="endTime" value="" />
+                </properties-param>
+            </init-params>
+        </component-plugin>
+    </external-component-plugins>
+</configuration>

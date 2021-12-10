@@ -1,0 +1,9 @@
+org/exo/training/plugin/Ponctuation.class
+org/exo/training/plugin/translate.class
+org/exo/training/job/PeriodicJob.class
+org/exo/training/listener/TextListener.class
+org/exo/training/plugin/TextServicePlugin.class
+org/exo/training/plugin/UpeerCaseTransformer.class
+org/exo/training/service/ITextService.class
+org/exo/training/job/CronJob.class
+org/exo/training/service/TextService.class

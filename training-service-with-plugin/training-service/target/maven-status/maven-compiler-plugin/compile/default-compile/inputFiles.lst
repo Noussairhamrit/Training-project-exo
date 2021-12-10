@@ -1,0 +1,9 @@
+/home/exo/Downloads/training-service-with-plugin/training-service/src/main/java/org/exo/training/listener/TextListener.java
+/home/exo/Downloads/training-service-with-plugin/training-service/src/main/java/org/exo/training/job/PeriodicJob.java
+/home/exo/Downloads/training-service-with-plugin/training-service/src/main/java/org/exo/training/plugin/TextServicePlugin.java
+/home/exo/Downloads/training-service-with-plugin/training-service/src/main/java/org/exo/training/plugin/Ponctuation.java
+/home/exo/Downloads/training-service-with-plugin/training-service/src/main/java/org/exo/training/plugin/UpeerCaseTransformer.java
+/home/exo/Downloads/training-service-with-plugin/training-service/src/main/java/org/exo/training/service/TextService.java
+/home/exo/Downloads/training-service-with-plugin/training-service/src/main/java/org/exo/training/plugin/translate.java
+/home/exo/Downloads/training-service-with-plugin/training-service/src/main/java/org/exo/training/service/ITextService.java
+/home/exo/Downloads/training-service-with-plugin/training-service/src/main/java/org/exo/training/job/CronJob.java
