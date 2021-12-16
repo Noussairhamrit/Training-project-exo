@@ -13,6 +13,12 @@ import org.exoplatform.commons.api.persistence.ExoEntity;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
+@NamedQueries({
+        @NamedQuery(name = "ClientEntity.getClientByAddresse",query = "select client FROM ClientEntity client WHERE client.addresse= :addresse"),
+        @NamedQuery(name = "ClientEntity.getNumber",query = "SELECT count (*) FROM ClientEntity client WHERE client.name= :name")
+})
+
 public class ClientEntity {
     @Id
     @GeneratedValue

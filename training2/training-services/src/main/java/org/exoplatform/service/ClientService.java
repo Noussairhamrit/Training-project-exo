@@ -1,9 +1,8 @@
 package org.exoplatform.service;
 
 
-import org.exo.training.plugin.TextServicePlugin;
+import org.apache.regexp.RE;
 import org.exo.training.plugin.UpeerCaseTransformer;
-import org.exo.training.service.ITextService;
 import org.exoplatform.dao.ClientDao;
 import org.exoplatform.dto.ClientDto;
 import org.exoplatform.entity.ClientEntity;
@@ -31,7 +30,9 @@ public class ClientService implements IclientService  {
     public void addPlugin(ClientServicePlugin clientServicePlugin) {
         this.plugins.add(clientServicePlugin);
     }
-////////////////////////////////////////////////////////////////////////
+
+
+    ////////////////////////////////////////////////////////////////////////
 //    private List<TextServicePlugin> pluginList = new ArrayList<>();
 //
 //
@@ -165,5 +166,47 @@ public class ClientService implements IclientService  {
                 }
                 return msg;
         }
+    @Override
+    public Response GetClientsByAddresse(String addresse) {
+        List<ClientEntity> clients=clientDao.getClientByAddresse(addresse);
+        List<ClientDto> dtolist = toDtoList(clients);
+        JSONArray jsonArray =new JSONArray();
+        try {
+            for(ClientDto client : dtolist){
+                JSONObject jsonObject = new JSONObject();
+
+                jsonObject.put("id", client.getId());
+                jsonObject.put("prenom", client.getPrenom());
+                jsonObject.put("name", client.getName());
+                jsonObject.put("email", client.getEmail());
+                jsonObject.put("addresse", client.getAddresse());
+                jsonArray.add(jsonObject);
+            }
+        }catch (Exception e){
+            log.error(e.getMessage(),e);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("An internal error has occurred When trying to import client list by Addresse")
+                    .build();
+        }
+        return Response.ok(jsonArray.toString(), MediaType.APPLICATION_JSON).build();
+    }
+
+    @Override
+    public Response numberOfClients(String name) {
+        long num = clientDao.numberOfClient(name);
+        JSONArray jsonArray =new JSONArray();
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("num", num);
+            jsonArray.add(jsonObject);
+            }
+        catch (Exception e){
+            log.error(e.getMessage(),e);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("An internal error has occurred When trying to import client list by Addresse")
+                    .build();
+        }
+        return Response.ok(jsonArray.toString(), MediaType.APPLICATION_JSON).build();
+    }
 
 }

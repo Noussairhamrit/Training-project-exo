@@ -4,8 +4,8 @@ import org.exoplatform.dto.ClientDto;
 import org.exoplatform.entity.ClientEntity;
 import org.exoplatform.plugin.ClientServicePlugin;
 
-import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 public interface IclientService {
     public Response GetAllClients();
@@ -14,4 +14,7 @@ public interface IclientService {
     public Response deleteClient(long id);
     public Response editClient(long id, ClientDto editClient);
     public void addPlugin(ClientServicePlugin clientServicePlugin);
+    public Response GetClientsByAddresse(String adresse);
+    public Response numberOfClients(String name);
+
 }

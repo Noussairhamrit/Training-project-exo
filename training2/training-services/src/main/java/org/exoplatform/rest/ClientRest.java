@@ -9,17 +9,12 @@ import org.exoplatform.service.IclientService;
 import org.exoplatform.services.log.ExoLogger;
 import org.exoplatform.services.log.Log;
 import org.exoplatform.services.rest.resource.ResourceContainer;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
+
 import javax.ws.rs.core.Response;
 
-import java.util.List;
-
-import static org.exoplatform.service.utils.Utils.toEntity;
 
 @Path("/clients")
 @Produces("application/json")
@@ -55,6 +50,16 @@ public class ClientRest implements ResourceContainer  {
     @Path("/edit/{id}")
     public Response editClient(@PathParam("id") long id, ClientDto editClient ){
         return clientService.editClient(id,editClient);
+    }
+    @GET
+    @Path("/addresse/{addresse}")
+    public Response GetAllClients(@PathParam("addresse") String addresse){
+        return  clientService.GetClientsByAddresse(addresse);
+    }
+    @GET
+    @Path("/count/{name}")
+    public Response numberOfClient(@PathParam("name") String name){
+        return clientService.numberOfClients(name);
     }
 }
 
